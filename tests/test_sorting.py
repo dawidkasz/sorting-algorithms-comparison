@@ -27,16 +27,24 @@ def test_quick_sort(test_case, request):
 
 
 def test_bubble_sort_benchmark(pan_tadeusz, benchmark):
+    benchmark.extra_info['name'] = 'bubble_sort'
+    benchmark.extra_info['dataset'] = len(pan_tadeusz)
     benchmark(bubble_sort, pan_tadeusz)
 
 
 def test_selection_sort_benchmark(pan_tadeusz, benchmark):
+    benchmark.extra_info['name'] = 'selection_sort'
+    benchmark.extra_info['dataset'] = len(pan_tadeusz)
     benchmark(selection_sort, pan_tadeusz)
 
 
 def test_merge_sort_benchmark(pan_tadeusz, benchmark):
+    benchmark.extra_info['name'] = 'merge_sort'
+    benchmark.extra_info['dataset'] = len(pan_tadeusz)
     benchmark(merge_sort, pan_tadeusz)
 
 
 def test_quick_sort_benchmark(pan_tadeusz, benchmark):
+    benchmark.extra_info['name'] = 'quick_sort'
+    benchmark.extra_info['dataset'] = len(pan_tadeusz)
     benchmark(quick_sort, pan_tadeusz)

@@ -1,4 +1,4 @@
-from src.utils import get_median_of_three, split_through_pivot, merge_arrays
+from utils import get_median_of_three, split_through_pivot, merge_arrays
 
 
 def bubble_sort(array):

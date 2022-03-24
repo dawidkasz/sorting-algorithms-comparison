@@ -60,7 +60,14 @@ def pan_tadeusz(request):
     file_path = os.path.join(os.path.dirname(os.path.realpath(__file__)),
                              pytest.pan_tadeusz_relative_path)
     with open(file_path) as f_handle:
-        for word in f_handle.read().split(' ')[:n_words]:
-            words_array.append(word.strip())
+        for line in f_handle.readlines():
+            for word in line.split(' '):
+                word = word.strip()
+                if not word:
+                    continue
+                words_array.append(word)
+
+                if len(words_array) >= n_words:
+                    return words_array
 
         return words_array
