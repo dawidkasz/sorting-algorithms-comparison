@@ -52,7 +52,7 @@ def test_case_empty():
     )
 
 
-@pytest.fixture(params=[n for n in range(1000, 11000, 1000)])
+@pytest.fixture(params=[100, *[n for n in range(1000, 11000, 1000)], 20000, 30000])
 def pan_tadeusz(request):
     words_array = []
     n_words = request.param
