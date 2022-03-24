@@ -1,4 +1,4 @@
-from src.utils import get_median_of_three, split_through_pivot
+from src.utils import get_median_of_three, split_through_pivot, merge_arrays
 
 
 def bubble_sort(array):
@@ -10,7 +10,15 @@ def selection_sort(array):
 
 
 def merge_sort(array):
-    pass
+    array_length = len(array)
+    if array_length < 2:
+        return array
+
+    mid_idx = array_length // 2
+    left_arr = merge_sort(array[:mid_idx])
+    right_arr = merge_sort(array[mid_idx:])
+
+    return merge_arrays(left_arr, right_arr)
 
 
 def quick_sort(array):
