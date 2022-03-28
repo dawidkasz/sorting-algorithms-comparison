@@ -71,21 +71,18 @@ def test_case_empty():
 
 
 @pytest.fixture(params=[50, 100, *list(range(1000, 10000, 1000)), 15000, 20000])
-def large_data(request):
-    words_array = []
-    n_words = request.param
+def data(request):
+    array = []
+    sample_size = request.param
 
     file_path = os.path.join(os.path.dirname(os.path.realpath(__file__)),
                              pytest.large_data_relative_path)
     with open(file_path) as f_handle:
         for line in f_handle.readlines():
-            for word in line.split(' '):
-                word = word.strip()
-                if not word:
-                    continue
-                words_array.append(word)
+            for num in line.split(' '):
+                array.append(int(num))
 
-                if len(words_array) >= n_words:
-                    return words_array
+                if len(array) >= sample_size:
+                    return array
 
-        return words_array
+        return array
