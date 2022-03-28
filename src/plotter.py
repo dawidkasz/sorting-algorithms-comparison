@@ -1,6 +1,7 @@
 import json
 from collections import defaultdict
 from matplotlib import pyplot as plt
+from utils import seconds_to_milliseconds
 
 
 CHART_TITLE = 'Sorting algorithms comparison'
@@ -14,10 +15,6 @@ ALGO_COLORS = {
     'merge_sort': 'blue',
     'quick_sort': 'green'
 }
-
-
-def seconds_to_milliseconds(num):
-    return num * 10**3
 
 
 def preprocess_data(json_data):

@@ -36,3 +36,7 @@ def merge_arrays(left_arr, right_arr):
             idx_in_right += 1
 
     return merged_arr
+
+
+def seconds_to_milliseconds(num):
+    return num * 10**3
