@@ -1,16 +1,4 @@
-from src.utils import get_median_of_three, split_through_pivot, merge_arrays
-
-
-def test_get_median_of_three_first_largest():
-    assert get_median_of_three(10, 8, -5) == 8
-
-
-def test_get_median_of_three_second_largest():
-    assert get_median_of_three('a', 'f', 'd') == 'd'
-
-
-def test_get_median_of_three_third_largest():
-    assert get_median_of_three(123, 12, 1234) == 123
+from src.utils import split_through_pivot, merge_arrays
 
 
 def test_split_through_pivot():

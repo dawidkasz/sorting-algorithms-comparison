@@ -11,7 +11,7 @@ def pytest_configure():
                                  'test_case_sorted',
                                  'test_case_reverse_sorted',
                                  'test_case_empty']
-    pytest.pan_tadeusz_relative_path = 'data/pan-tadeusz.txt'
+    pytest.large_data_relative_path = 'data/numbers.txt'
 
 
 @pytest.fixture
@@ -20,6 +20,7 @@ def test_case_numbers_1():
         [9, 7, 2, 4, 11, 7, 1, 4, 5, 14, 8, 154, 21, 33, 2, 18],
         [1, 2, 2, 4, 4, 5, 7, 7, 8, 9, 11, 14, 18, 21, 33, 154]
     )
+
 
 @pytest.fixture
 def test_case_numbers_2():
@@ -52,6 +53,7 @@ def test_case_sorted():
         [1, 2, 3, 4, 5]
     )
 
+
 @pytest.fixture
 def test_case_reverse_sorted():
     return (
@@ -68,13 +70,13 @@ def test_case_empty():
     )
 
 
-@pytest.fixture(params=[100, *[n for n in range(1000, 11000, 1000)], 20000, 30000])
-def pan_tadeusz(request):
+@pytest.fixture(params=[50, 100, *list(range(1000, 10000, 1000)), 15000, 20000])
+def large_data(request):
     words_array = []
     n_words = request.param
 
     file_path = os.path.join(os.path.dirname(os.path.realpath(__file__)),
-                             pytest.pan_tadeusz_relative_path)
+                             pytest.large_data_relative_path)
     with open(file_path) as f_handle:
         for line in f_handle.readlines():
             for word in line.split(' '):

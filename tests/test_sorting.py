@@ -5,13 +5,15 @@ from src.sorting import bubble_sort, selection_sort, merge_sort, quick_sort
 @pytest.mark.parametrize(pytest.test_case, pytest.sorting_test_cases)
 def test_bubble_sort(test_case, request):
     data, expected = request.getfixturevalue(test_case)
-    assert bubble_sort(data) == expected
+    bubble_sort(data)
+    assert data == expected
 
 
 @pytest.mark.parametrize(pytest.test_case, pytest.sorting_test_cases)
 def test_selection_sort(test_case, request):
     data, expected = request.getfixturevalue(test_case)
-    assert selection_sort(data) == expected
+    selection_sort(data)
+    assert data == expected
 
 
 @pytest.mark.parametrize(pytest.test_case, pytest.sorting_test_cases)
@@ -26,27 +28,27 @@ def test_quick_sort(test_case, request):
     assert quick_sort(data) == expected
 
 
-def test_bubble_sort_benchmark(pan_tadeusz, benchmark):
-    if len(pan_tadeusz) <= 10000:
+def test_bubble_sort_benchmark(data, benchmark):
+    if len(data) <= 10000:
         benchmark.extra_info['name'] = 'bubble_sort'
-        benchmark.extra_info['sample_size'] = len(pan_tadeusz)
-        benchmark(bubble_sort, pan_tadeusz)
+        benchmark.extra_info['sample_size'] = len(data)
+        benchmark(bubble_sort, data)
 
 
-def test_selection_sort_benchmark(pan_tadeusz, benchmark):
-    if len(pan_tadeusz) <= 10000:
+def test_selection_sort_benchmark(data, benchmark):
+    if len(data) <= 10000:
         benchmark.extra_info['name'] = 'selection_sort'
-        benchmark.extra_info['sample_size'] = len(pan_tadeusz)
-        benchmark(selection_sort, pan_tadeusz)
+        benchmark.extra_info['sample_size'] = len(data)
+        benchmark(selection_sort, data)
 
 
-def test_merge_sort_benchmark(pan_tadeusz, benchmark):
+def test_merge_sort_benchmark(data, benchmark):
     benchmark.extra_info['name'] = 'merge_sort'
-    benchmark.extra_info['sample_size'] = len(pan_tadeusz)
-    benchmark(merge_sort, pan_tadeusz)
+    benchmark.extra_info['sample_size'] = len(data)
+    benchmark(merge_sort, data)
 
 
-def test_quick_sort_benchmark(pan_tadeusz, benchmark):
+def test_quick_sort_benchmark(data, benchmark):
     benchmark.extra_info['name'] = 'quick_sort'
-    benchmark.extra_info['sample_size'] = len(pan_tadeusz)
-    benchmark(quick_sort, pan_tadeusz)
+    benchmark.extra_info['sample_size'] = len(data)
+    benchmark(quick_sort, data)
