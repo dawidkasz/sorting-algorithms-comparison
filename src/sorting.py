@@ -1,5 +1,4 @@
-import random
-from utils import split_through_pivot, merge_arrays
+from utils import partition, merge_arrays
 
 
 def bubble_sort(array):
@@ -21,6 +20,17 @@ def selection_sort(array):
         array[i], array[mi_idx] = array[mi_idx], array[i]
 
 
+def insertion_sort(array):
+    for i in range(1, len(array)):
+        key = array[i]
+        j = i-1
+        while j >= 0 and array[j] > key:
+            array[j+1] = array[j]
+            j -= 1
+
+        array[j+1] = key
+
+
 def merge_sort(array):
     array_length = len(array)
     if array_length < 2:
@@ -33,12 +43,13 @@ def merge_sort(array):
     return merge_arrays(left_arr, right_arr)
 
 
-def quick_sort(array):
-    array_length = len(array)
-    if array_length < 2:
-        return [*array]
+def quick_sort(array, p=None, r=None):
+    if p is None:
+        p = 0
+    if r is None:
+        r = len(array) - 1
 
-    pivot = random.choice(array)
-    less, equal, more = split_through_pivot(array, pivot)
-
-    return [*quick_sort(less), *equal, *quick_sort(more)]
+    if p < r:
+        q = partition(array, p, r)
+        quick_sort(array, p, q-1)
+        quick_sort(array, q+1, r)

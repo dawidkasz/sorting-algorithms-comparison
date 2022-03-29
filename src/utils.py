@@ -1,17 +1,20 @@
-def split_through_pivot(array, pivot):
-    less = []
-    equal = []
-    more = []
+import random
 
-    for el in array:
-        if el == pivot:
-            equal.append(el)
-        elif el < pivot:
-            less.append(el)
-        else:
-            more.append(el)
 
-    return less, equal, more
+def partition(array, p, r):
+    pv = random.randint(p, r)
+    array[pv], array[r] = array[r], array[pv]
+
+    x = array[r]
+    i = p
+    for j in range(p, r):
+        if array[j] <= x:
+            array[j], array[i] = array[i], array[j]
+            i += 1
+
+    array[i], array[r] = array[r], array[i]
+
+    return i
 
 
 def merge_arrays(left_arr, right_arr):

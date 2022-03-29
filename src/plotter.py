@@ -12,6 +12,7 @@ FIGSIZE = (10, 7.2)
 ALGO_COLORS = {
     'bubble_sort': 'red',
     'selection_sort': 'orange',
+    'insertion_sort': 'purple',
     'merge_sort': 'blue',
     'quick_sort': 'green'
 }
