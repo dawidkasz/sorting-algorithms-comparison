@@ -70,7 +70,7 @@ def test_case_empty():
     )
 
 
-@pytest.fixture(params=[50, 100, *list(range(1000, 10000, 1000)), 15000, 20000])
+@pytest.fixture(params=[30, 50, 100, *list(range(1000, 10000, 1000)), 15000, 20000])
 def data(request):
     array = []
     sample_size = request.param
