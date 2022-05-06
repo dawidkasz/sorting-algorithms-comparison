@@ -1,4 +1,4 @@
-# sorting algorithms comparison
+# sorting-benchmarks
 
 ## Usage
 1. Install dependencies with `pip install -r requirements.txt`.
